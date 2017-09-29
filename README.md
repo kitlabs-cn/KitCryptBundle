@@ -1,2 +1,56 @@
 # KitCryptBundle
-Encryption and decryption in symfony.(DES,3DES,IDEA,RC2,RC4,RSA,DSA,AES,BLOWFISH)
+Symfony Crypt Bundle(use openssl)
+
+
+## Installation
+ 
+### Step 1: Download the Bundle
+---------------------------
+ 
+Open a command console, enter your project directory and execute the
+following command to download the latest stable version of this bundle:
+ 
+	
+	$ composer require kitlabs/kit-crypt-bundle
+
+ 
+This command requires you to have Composer installed globally, as explained
+in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
+of the Composer documentation.
+ 
+### Step 2: Enable the Bundle
+---------------------------
+ 
+Then, enable the bundle by adding it to the list of registered bundles
+in the `app/AppKernel.php` file of your project:
+
+	<?php
+	// app/AppKernel.php
+	 
+	// ...
+	class AppKernel extends Kernel
+	{
+	    public function registerBundles()
+	    {
+	        $bundles = array(
+	            // ...
+	 
+	            new Kit\CryptBundle\KitCryptBundle(),
+	        );
+	 
+	        // ...
+	    }
+	 
+	    // ...
+	}
+
+## Usage
+	
+	/**
+     * 
+     * @var \Kit\CryptBundle\Service\OpensslService $opensslService
+     */
+    $opensslService = $this->get('kit_crypt.openssl');
+    $encrypt = $opensslService->encrypt('lcp0578');
+    dump($encrypt);
+    dump($opensslService->decrypt($encrypt));

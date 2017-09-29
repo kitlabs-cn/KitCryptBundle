@@ -1,0 +1,31 @@
+{
+	"name": "kitlabs/kit-crypt-bundle",
+	"type": "symfony-bundle",
+	"description": "Symfony Debug Command Bundle",
+	"keywords": ["crypt bundle","OPNESSL","DES", "AES"],
+	"homepage": "https://github.com/kitlabs-cn/KitCryptBundle",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "lcp0578",
+			"email": "lcp0578@gmail.com",
+			"homepage": "https://github.com/lcp0578"
+		},
+		{
+			"name": "The contributors",
+			"homepage": "https://github.com/kitlabs-cn/KitCryptBundle/contributors"
+		}
+	],
+	"support": {
+		"email": "lcp0578@gmail.com"
+	},
+	"require": {
+		"php": ">=5.5.9",
+		"ext-openssl": "*"
+	},
+	"autoload": {
+		 "psr-4": {
+            "Kit\\CryptBundle\\": ""
+        }
+	}
+}

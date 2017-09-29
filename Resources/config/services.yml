@@ -1,0 +1,7 @@
+services:
+#    kit_crypt.example:
+#        class: Kit\CryptBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    kit_crypt.openssl:
+        class: Kit\CryptBundle\Service\OpensslService
+        arguments: ["%kit_oss.secret_key%", "%kit_oss.secret_iv%", "%kit_oss.method%"]
