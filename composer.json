@@ -1,7 +1,7 @@
 {
 	"name": "kitlabs/kit-crypt-bundle",
 	"type": "symfony-bundle",
-	"description": "Symfony Debug Command Bundle",
+	"description": "Symfony Crypt Bundle",
 	"keywords": ["crypt bundle","OPNESSL","DES", "AES"],
 	"homepage": "https://github.com/kitlabs-cn/KitCryptBundle",
 	"license": "MIT",
