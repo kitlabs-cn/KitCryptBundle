@@ -43,6 +43,19 @@ in the `app/AppKernel.php` file of your project:
 	 
 	    // ...
 	}
+### Setp 3: config 
+
+	# app/config/config.yml
+	kit_crypt:
+	    method: 'AES-256-CBC'
+	    secret_key: 'ThisIsSecret'
+	    secret_iv: '1234567890abcdef'
+	
+PS:params  
+
+- **method** list [openssl cipher methods](cipher_methods.md)
+- **secret_iv** iv encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+	
 
 ## Usage
 	

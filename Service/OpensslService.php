@@ -51,6 +51,15 @@ class OpensslService
         return openssl_decrypt(base64_decode($string), $this->method, $key, 0, $iv);
     }
     
+    private function checkMethod()
+    {
+        return in_array($this->method, openssl_get_cipher_methods(true));
+    }
+    /**
+     * 
+     * @param unknown $iv
+     * @return boolean
+     */
     private function checkIv($iv)
     {
         // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
