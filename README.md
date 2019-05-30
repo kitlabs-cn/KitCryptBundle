@@ -54,7 +54,7 @@ kit_crypt:
             secret_key: 'Kit@Crypt!Bundle'
             secret_iv: '12345!@#$%^67890' #16 bit
             option: 0 # 0默认值;OPENSSL_RAW_DATA = 1,采用PKCS7填充;OPENSSL_ZERO_PADDING = 2，采用0填充; OPENSSL_NO_PADDING = 3,不填充
-        data_api:
+        data_api:# client name,可以是多个
             method: 'DES-CBC'
             secret_key: 'Kit@Crypt!Bundle'
             secret_iv: 'q1w2e3r4'
