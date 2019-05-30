@@ -23,33 +23,43 @@ of the Composer documentation.
  
 Then, enable the bundle by adding it to the list of registered bundles
 in the `app/AppKernel.php` file of your project:
-
-	<?php
-	// app/AppKernel.php
-	 
-	// ...
-	class AppKernel extends Kernel
-	{
-	    public function registerBundles()
-	    {
-	        $bundles = array(
-	            // ...
-	 
-	            new Kit\CryptBundle\KitCryptBundle(),
-	        );
-	 
-	        // ...
-	    }
-	 
-	    // ...
-	}
+``` php
+<?php
+// app/AppKernel.php
+ 
+// ...
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+ 
+            new Kit\CryptBundle\KitCryptBundle(),
+        );
+ 
+        // ...
+    }
+ 
+    // ...
+}
+```
 ### Setp 3: config 
-
-	# app/config/config.yml
-	kit_crypt:
-	    method: 'AES-256-CBC'
-	    secret_key: 'ThisIsSecret'
-	    secret_iv: '1234567890abcdef'
+``` yaml
+# app/config/config.yml
+kit_crypt:
+    clients:
+        default:
+            method: 'AES-256-CBC'
+            secret_key: 'Kit@Crypt!Bundle'
+            secret_iv: '12345!@#$%^67890' #16 bit
+            option: 0 # 0默认值;OPENSSL_RAW_DATA = 1,采用PKCS7填充;OPENSSL_ZERO_PADDING = 2，采用0填充; OPENSSL_NO_PADDING = 3,不填充
+        data_api:
+            method: 'DES-CBC'
+            secret_key: 'Kit@Crypt!Bundle'
+            secret_iv: 'q1w2e3r4'
+            option: 1
+```
 	
 PS:params  
 
@@ -58,12 +68,13 @@ PS:params
 	
 
 ## Usage
-	
-	/**
-     * 
-     * @var \Kit\CryptBundle\Service\OpensslService $opensslService
-     */
-    $opensslService = $this->get('kit_crypt.openssl');
-    $encrypt = $opensslService->encrypt('lcp0578');
-    dump($encrypt);
-    dump($opensslService->decrypt($encrypt));
+``` php
+/**
+ * 
+ * @var \Kit\CryptBundle\Service\OpensslService $opensslService
+ */
+$opensslService = $this->get('kit_crypt.openssl');
+$encrypt = $opensslService->encrypt('lcp0578', 'data_api'); //public function encrypt($string, $name = 'default', $iv = null)
+dump($encrypt);
+dump($opensslService->decrypt($encrypt, 'data_api')); //public function decrypt($string, $name = 'default', $iv = null)
+```

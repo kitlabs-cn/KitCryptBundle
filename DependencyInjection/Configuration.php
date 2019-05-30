@@ -22,9 +22,23 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('kit_crypt');
         $rootNode->children()
-                    ->scalarNode('secret_key')->cannotBeEmpty()->end()
-                    ->scalarNode('secret_iv')->cannotBeEmpty()->end()
-                    ->scalarNode('method')->cannotBeEmpty()->end()
+                    ->arrayNode('clients')
+                    ->useAttributeAsKey('name')
+                    ->arrayPrototype()
+                        ->children()
+                            ->scalarNode('secret_key')
+                            ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('secret_iv')
+                            ->end()
+                            ->scalarNode('method')
+                            ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('option')
+                            ->cannotBeEmpty()
+                            ->end()
+                        ->end()
+                     ->end()
                 ->end();
         return $treeBuilder;
     }

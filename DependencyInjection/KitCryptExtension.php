@@ -25,8 +25,6 @@ class KitCryptExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
         
-        $container->setParameter('kit_oss.secret_key', $config['secret_key']);
-        $container->setParameter('kit_oss.secret_iv', $config['secret_iv']);
-        $container->setParameter('kit_oss.method', $config['method']);
+        $container->setParameter('kit_crypt.clients', $config['clients']);
     }
 }
