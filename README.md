@@ -77,4 +77,6 @@ $opensslService = $this->get('kit_crypt.openssl');
 $encrypt = $opensslService->encrypt('lcp0578', 'data_api'); //public function encrypt($string, $name = 'default', $iv = null)
 dump($encrypt);
 dump($opensslService->decrypt($encrypt, 'data_api')); //public function decrypt($string, $name = 'default', $iv = null)
+function cryptoJsAesDecrypt($passphrase, $ct, $iv, $s)
+function cryptoJsAesEncrypt($passphrase, $value)
 ```
