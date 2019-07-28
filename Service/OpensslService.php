@@ -57,7 +57,7 @@ class OpensslService
      */
     private function checkMethod($name = 'default')
     {
-        return in_array(strtolower($this->getMethod($name)), openssl_get_cipher_methods(true));
+        return in_array($this->getMethod($name), openssl_get_cipher_methods(true));
     }
     /**
      * 
