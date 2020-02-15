@@ -22,9 +22,9 @@ class OpensslService
     public function encrypt($string, $name = 'default', $iv = null) {
         
         // hash
-        $key = ('AES-256-CBC' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
+        $key = ('aes-256-cbc' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
         $iv = ($iv === null) ? $this->getSecretIv($name) : $iv;
-        if('AES-256-CBC' == $this->getMethod($name) && !$this->checkIv($iv)){
+        if('aes-256-cbc' == $this->getMethod($name) && !$this->checkIv($iv)){
             return false;
         }
         if(!$this->checkMethod($name)){
@@ -41,9 +41,9 @@ class OpensslService
     public function decrypt($string, $name = 'default', $iv = null)
     {
         // hash
-        $key = ('AES-256-CBC' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
+        $key = ('aes-256-cbc' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
         $iv = ($iv === null) ? $this->getSecretIv($name) : $iv;
-        if('AES-256-CBC' == $this->getMethod($name) && !$this->checkIv($iv)){
+        if('aes-256-cbc' == $this->getMethod($name) && !$this->checkIv($iv)){
             return false;
         }
         if(!$this->checkMethod($name)){
@@ -66,7 +66,7 @@ class OpensslService
      */
     private function checkIv($iv)
     {
-        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        // iv - encrypt method aes-256-cbc expects 16 bytes - else you will get a warning
         return strlen($iv) === 16;
     }
     /**
