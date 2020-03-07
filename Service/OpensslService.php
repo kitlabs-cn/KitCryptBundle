@@ -22,9 +22,9 @@ class OpensslService
     public function encrypt($string, $name = 'default', $iv = null) {
         
         // hash
-        $key = ('AES-256-CBC' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
+        $key = (strcasecmp('AES-256-CBC', $this->getMethod($name)) == 0) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
         $iv = ($iv === null) ? $this->getSecretIv($name) : $iv;
-        if('AES-256-CBC' == $this->getMethod($name) && !$this->checkIv($iv)){
+        if(strcasecmp('AES-256-CBC', $this->getMethod($name)) == 0 && !$this->checkIv($iv)){
             return false;
         }
         if(!$this->checkMethod($name)){
@@ -41,9 +41,9 @@ class OpensslService
     public function decrypt($string, $name = 'default', $iv = null)
     {
         // hash
-        $key = ('AES-256-CBC' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
+        $key = (strcasecmp('AES-256-CBC', $this->getMethod($name)) == 0) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
         $iv = ($iv === null) ? $this->getSecretIv($name) : $iv;
-        if('AES-256-CBC' == $this->getMethod($name) && !$this->checkIv($iv)){
+        if(strcasecmp('AES-256-CBC', $this->getMethod($name)) == 0 && !$this->checkIv($iv)){
             return false;
         }
         if(!$this->checkMethod($name)){
