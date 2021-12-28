@@ -1,4 +1,5 @@
 <?php
+
 namespace Kit\CryptBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -17,29 +18,29 @@ class Configuration implements ConfigurationInterface
      * {@inheritdoc}
      *
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('kit_crypt');
+        $treeBuilder = new TreeBuilder('kit_crypt');
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode->children()
-                    ->arrayNode('clients')
-                    ->useAttributeAsKey('name')
-                    ->arrayPrototype()
-                        ->children()
-                            ->scalarNode('secret_key')
-                            ->cannotBeEmpty()
-                            ->end()
-                            ->scalarNode('secret_iv')
-                            ->end()
-                            ->scalarNode('method')
-                            ->cannotBeEmpty()
-                            ->end()
-                            ->scalarNode('option')
-                            ->cannotBeEmpty()
-                            ->end()
-                        ->end()
-                     ->end()
-                ->end();
+            ->arrayNode('clients')
+            ->useAttributeAsKey('name')
+            ->arrayPrototype()
+            ->children()
+            ->scalarNode('secret_key')
+            ->cannotBeEmpty()
+            ->end()
+            ->scalarNode('secret_iv')
+            ->end()
+            ->scalarNode('method')
+            ->cannotBeEmpty()
+            ->end()
+            ->scalarNode('option')
+            ->cannotBeEmpty()
+            ->end()
+            ->end()
+            ->end()
+            ->end();
         return $treeBuilder;
     }
 }

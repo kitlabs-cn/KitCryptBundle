@@ -20,7 +20,7 @@
 		"email": "lcp0578@gmail.com"
 	},
 	"require": {
-		"php": ">=5.5.9",
+		"php": ">=8.0",
 		"ext-openssl": "*"
 	},
 	"autoload": {
