@@ -24,7 +24,7 @@ class OpensslService
     public function encrypt($string, $name = 'default', $iv = null)
     {
         // hash
-        $key = ('aes-256-cbc' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
+    	$key = (strcasecmp('AES-256-CBC', $this->getMethod($name)) == 0) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
         $iv = ($iv === null) ? $this->getSecretIv($name) : $iv;
         if ('aes-256-cbc' == $this->getMethod($name) && ! $this->checkIv($iv)) {
             return false;
@@ -44,7 +44,7 @@ class OpensslService
     public function decrypt($string, $name = 'default', $iv = null)
     {
         // hash
-        $key = ('aes-256-cbc' == $this->getMethod($name)) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
+    	$key = (strcasecmp('AES-256-CBC', $this->getMethod($name)) == 0) ? hash('sha256', $this->getSecretKey($name)) : $this->getSecretKey($name);
         $iv = ($iv === null) ? $this->getSecretIv($name) : $iv;
         if ('aes-256-cbc' == $this->getMethod($name) && ! $this->checkIv($iv)) {
             return false;

@@ -5,4 +5,4 @@ services:
     kit_crypt.openssl:
         class: Kit\CryptBundle\Service\OpensslService
         arguments:
-		    $clients: "%kit_crypt.clients%"
+            $clients: "%kit_crypt.clients%"
