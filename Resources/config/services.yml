@@ -4,4 +4,5 @@ services:
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
     kit_crypt.openssl:
         class: Kit\CryptBundle\Service\OpensslService
-        arguments: ["%kit_crypt.clients%"]
+        arguments:
+		    $clients: "%kit_crypt.clients%"
